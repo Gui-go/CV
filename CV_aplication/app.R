@@ -1,36 +1,60 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
+library("shiny")
+library("shinythemes")
+library("shinyWidgets")
 
-library(shiny)
 
-# Define UI for application that draws a histogram
-ui <- fluidPage(
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
+ui <- shinyUI(
+    fluidPage(theme = shinytheme("darkly"),
+        includeCSS("www/style.css"),
+              fluidRow(
+                  column(width = 10,offset = 1,
+                         navbarPage("Meu CV",
+                                    # position = "fixed-top",
+                                    tabPanel("Apresentação"),
+                                    tabPanel("Skillz",
+                                             br(),
+                                             br(),
+                                             br(),
+                                             br(),
+                                             br(),
+                                             br(),
+                                             column(4,
+                                                    h3("Linguagens:"),
+                                                    progressBar(title = "R", id = "skillzbar1", value = 73, total = 100, status = "light", striped = T),
+                                                    progressBar(title = "CSS", id = "skillzbar1", value = 13, total = 100, status = "light", striped = T))),
+                                    tabPanel("Experiências Acadêmicas"),
+                                    tabPanel("Experiências Profissionais"),
+                                    tabPanel("Portifólio"),
+                                    tabPanel("Contato"),
+                                    navbarMenu("more",
+                                               tabPanel("Panel_M1"),
+                                               tabPanel("Panel_M2"),
+                                               tabPanel("Panel_M3"),
+                                               tabPanel("Panel_M4"))
+                         ))
+              )
     )
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {

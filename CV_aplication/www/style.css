@@ -1,0 +1,9 @@
+.navbar .navbar-nav {
+  float: right;
+  font-weight: 900;
+}
+.navbar .navbar-header {
+  float: left;
+  font-weight: 900;
+}
+
